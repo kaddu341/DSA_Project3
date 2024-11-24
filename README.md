@@ -17,7 +17,7 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
   1. The fat cat sat on the mat
 
 **Algorithm:**
-- We have a dataset of 300k Enfglish sentences from Wikipedia (https://wortschatz.uni-leipzig.de/en/download/English)
+- We have a dataset of 300k English sentences from Wikipedia (https://wortschatz.uni-leipzig.de/en/download/English)
 - Using this dataset, we can calculate the frequencies of each word, thereby obtaining the bigram probabilities, which will be stored in a .txt file.
 - The data will be in the form "first word" "second word" "probability"
 - Example:
