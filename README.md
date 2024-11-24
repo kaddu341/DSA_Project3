@@ -28,7 +28,7 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
   The rat 0.05
   sat on 0.02
   the mat 0.35
-  ... etc.
+  etc.
   ```
 
 - This data can be represented in the form of a graph, where an edge from Node A to Node B implies that B has some probability of coming after the word A and the weight of the edge is this probability.
