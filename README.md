@@ -21,13 +21,15 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
 - Using this dataset, we can calculate the frequencies of each word, thereby obtaining the bigram probabilities, which will be stored in a .txt file.
 - The data will be in the form "first word" "second word" "probability"
 - Example:
+  ```
   The fat 0.01
   The cat 0.03
   The bat 0.01
   The rat 0.05
   sat on 0.02
   the mat 0.35
-  ... etcetera
+  ... etc.
+  ```
 
 - This data can be represented in the form of a graph, where an edge from Node A to Node B implies that B has some probability of coming after the word A and the weight of the edge is this probability.
 - Example: if the probability of the bigram "sat on" is 0.02, that means there is an edge from "sat" to "on" with weight 0.02.
