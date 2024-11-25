@@ -46,3 +46,13 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
 - Abdullah will implement the Adjacency List and help with the video.
 - Ahsan will do the edge list.
 - We will collaborate together on the report.
+
+**Structure:**
+- main.cpp
+  1. parsing dataset into a vector<tuple<string, string, float>> in the form (from, to, weight).
+  2. manage I/O (implement algorithm)
+- Graph ADT
+  1. constructor(vector<tuple<string, string, float>>)
+  2. vector<pair<string, float>> outdegrees(string word) in the form (to, weight)
+  3. vector<pair<string, float>> outdegrees(string word) in the form (from, weight)
+  4. destructor()
