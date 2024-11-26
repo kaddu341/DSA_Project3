@@ -9,7 +9,23 @@
 
 using namespace std;
 
-// helper function to process data
+// declare helper function to process data
+vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile);
+
+// main function
+int main() {
+  vector<tuple<string, string, float>> edges = parseDataset("/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+
+  // testing
+  const tuple<string, string, float>& test = edges.at(79);
+  cout << get<0>(test) << endl;
+  cout << get<1>(test) << endl;
+  cout << get<2>(test) << endl;
+
+  return 0;
+}
+
+// define the helper function
 vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile) {
   unordered_map<int, string> wordsMap;
 
@@ -62,17 +78,4 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 
   // return the result
   return edges;
-}
-
-// main function
-int main() {
-  vector<tuple<string, string, float>> edges = parseDataset("/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
-
-  // testing
-  const tuple<string, string, float>& test = edges.at(79);
-  cout << get<0>(test) << endl;
-  cout << get<1>(test) << endl;
-  cout << get<2>(test) << endl;
-
-  return 0;
 }
