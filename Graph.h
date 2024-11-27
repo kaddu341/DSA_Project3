@@ -13,11 +13,11 @@ public:
    // the elements of the edges vector are in the form (from, to, weight)
    explicit Graph(const vector<std::tuple<string, string, float>>& edges) {}
 
-   // this should be overridden to return a vector of all the outdegrees of a given word and associated weights
+   // this should be overridden to return a vector of all the outdegrees of a given word and associated weights; should return empty vector if no outdegrees
    virtual vector<pair<string, float>> outdegrees(string word) = 0;
 
-   // this should be overridden to return a vector of all the indegrees of a given word and associated weights
-   virtual vector<pair<string, float>> indegrees() = 0;
+   // this should be overridden to return a vector of all the indegrees of a given word and associated weights; should return empty vector if no indegrees
+   virtual vector<pair<string, float>> indegrees(string word) = 0;
 
    // virtual destructor
    virtual ~Graph() = default;

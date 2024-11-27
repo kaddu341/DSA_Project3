@@ -15,7 +15,7 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 
 // main function
 int main() {
-  vector<tuple<string, string, float>> edges = parseDataset("data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+  const vector<tuple<string, string, float>> edges = parseDataset("data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
 
   // testing
   const tuple<string, string, float>& test = edges.at(79);
