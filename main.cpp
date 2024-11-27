@@ -13,6 +13,7 @@ using namespace std;
 
 // declare helper function to process data
 vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile);
+// temporary
 vector<tuple<string, string, float>> parseDatasetWindows(const string& wordsFile, const string& bigramsFile);
 
 // main function
