@@ -14,18 +14,7 @@ using namespace std;
 // declare helper function to process data
 vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile);
 
-// main function
-int main() {
-  const vector<tuple<string, string, float>> edges = parseDataset("data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
 
-  // testing
-  const tuple<string, string, float>& test = edges.at(79);
-  cout << get<0>(test) << endl;
-  cout << get<1>(test) << endl;
-  cout << get<2>(test) << endl;
-
-  return 0;
-}
 
 // define the helper function
 vector<tuple<string, string, float>> parseDatasetWindows(const string& wordsFile, const string& bigramsFile) {
@@ -135,4 +124,20 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 
   // return the result
   return edges;
+}
+
+
+
+// main function
+int main() {
+    // "../" for windows relative path
+    const vector<tuple<string, string, float>> edges = parseDatasetWindows("../data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "../data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+
+    // testing
+    const tuple<string, string, float>& test = edges.at(79);
+    cout << get<0>(test) << endl;
+    cout << get<1>(test) << endl;
+    cout << get<2>(test) << endl;
+
+    return 0;
 }
