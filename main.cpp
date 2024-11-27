@@ -6,6 +6,7 @@
 # include <vector>
 # include <fstream>
 # include <sstream>
+# include <filesystem>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 
 // main function
 int main() {
-  vector<tuple<string, string, float>> edges = parseDataset("/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "/Users/awwabaliazam/CLionProjects/DSA_Project3/data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+  vector<tuple<string, string, float>> edges = parseDataset("data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
 
   // testing
   const tuple<string, string, float>& test = edges.at(79);
@@ -27,11 +28,13 @@ int main() {
 
 // define the helper function
 vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile) {
-  unordered_map<int, string> wordsMap;
+  string cwd = filesystem::current_path().string();
+  cwd = cwd.substr(0, cwd.find_last_of('/'));
 
-  // get all the words and their indices and store them in wordsMap
+  // get all the words and their indices and store them in an unordered map
+  unordered_map<int, string> wordsMap;
+  ifstream wordStream(cwd + "/" + wordsFile);
   string line;
-  ifstream wordStream(wordsFile);
 
   while (getline(wordStream, line)) {
 
@@ -43,7 +46,7 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
       entries.push_back(entry);
     }
 
-    // exception handling to avoid misprocessing data
+    // exception handling to avoid mis-processing data
     if (entries.size() == 3) {
       wordsMap[stoi(entries[0])] = entries[1];
     }
@@ -52,8 +55,7 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 
   // now process all the bigrams and store them in the return vector
   vector<tuple<string, string, float>> edges;
-
-  ifstream bigramStream(bigramsFile);
+  ifstream bigramStream(cwd + "/" + bigramsFile);
   while (getline(bigramStream, line)) {
 
     // break up each line into words
@@ -64,7 +66,7 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
       entries.push_back(entry);
     }
 
-    // exception handling to avoid misprocessing data
+    // exception handling to avoid mis-processing data
     if (entries.size() == 4) {
       int index1 = stoi(entries[0]);
       int index2 = stoi(entries[1]);
