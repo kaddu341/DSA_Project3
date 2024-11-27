@@ -8,13 +8,13 @@
 # include <sstream>
 # include <filesystem>
 # include <unordered_map>
+# include "Graph.h"
 
 using namespace std;
 
 // declare helper function to process data
 vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const string& bigramsFile);
-// temporary
-vector<tuple<string, string, float>> parseDatasetWindows(const string& wordsFile, const string& bigramsFile);
+
 
 
 
@@ -133,13 +133,26 @@ vector<tuple<string, string, float>> parseDataset(const string& wordsFile, const
 // main function
 int main() {
     // "../" for windows relative path
-    const vector<tuple<string, string, float>> edges = parseDatasetWindows("../data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "../data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+    const vector<tuple<string, string, float>> edges = parseDatasetWindows("data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-words.txt", "data_processing/eng-simple_wikipedia_2021_300K/eng-simple_wikipedia_2021_300K-co_n.txt");
+
+    auto Alist = AdjacencyList(edges);
+
+
 
     // testing
-    const tuple<string, string, float>& test = edges.at(79);
-    cout << get<0>(test) << endl;
-    cout << get<1>(test) << endl;
-    cout << get<2>(test) << endl;
+    auto indegreeList = Alist.indegrees("the");
+    auto outdegreeList = Alist.outdegrees("the");
+    for (const auto& [key, value] : indegreeList) {
+        cout << "InDegree Key: " << key << ", Value: " << value << endl;
+    }
+    for (const auto& [key, value] : outdegreeList) {
+        cout << "OutDegree Key: " << key << ", Value: " << value << endl;
+    }
+
+//    const tuple<string, string, float>& test = edges.at(79);
+//    cout << get<0>(test) << endl;
+//    cout << get<1>(test) << endl;
+//    cout << get<2>(test) << endl;
 
     return 0;
 }

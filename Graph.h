@@ -1,4 +1,6 @@
 # pragma once
+
+#include <unordered_map>
 # include <tuple>
 # include <vector>
 # include <string>
@@ -22,3 +24,46 @@ public:
    // virtual destructor
    virtual ~Graph() = default;
 };
+
+
+class AdjacencyList : public Graph {
+private:
+    // Adjacency list representation: node -> vector of (neighbor, weight)
+    // adjacency list for outdegrees
+    unordered_map<string, vector<pair<string, float>>> outDegreeList;
+    // Reverse adjacency list for indegrees
+    unordered_map<string, vector<pair<string, float>>> inDegreeList;
+
+public:
+    explicit AdjacencyList(const vector<tuple<string, string, float>>& edges)
+            : Graph(edges) {
+        for (const auto& edge : edges) {
+            string from = get<0>(edge);
+            string to = get<1>(edge);
+            float weight = get<2>(edge);
+
+            // makes outdegree vector
+            outDegreeList[from].emplace_back(to, weight);
+
+            // makes indegree vector
+            inDegreeList[to].emplace_back(from, weight);
+        }
+    }
+
+    vector<pair<string, float>> outdegrees(string word) override {
+        if (outDegreeList.find(word) != outDegreeList.end()) {
+            return outDegreeList[word];
+        }
+        return {}; // Return empty vector if no outdegrees
+    }
+
+    vector<pair<string, float>> indegrees(string word) override {
+        if (inDegreeList.find(word) != inDegreeList.end()) {
+            return inDegreeList[word];
+        }
+        return {}; // Return empty vector if no indegrees
+    }
+
+    ~AdjacencyList() override = default;
+};
+
