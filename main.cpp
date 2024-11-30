@@ -37,8 +37,8 @@ int main() {
     graph = new AdjacencyList(edges);
   }
   else if (choice == 1) {
-    cout << "Sorry, Edge List hasn't been implemented yet\n";
-    return 0;
+      graph = new EdgeList(edges);
+
   }
   else {
     cout << "Sorry, Invalid Input\n";

@@ -67,3 +67,36 @@ public:
     ~AdjacencyList() override = default;
 };
 
+class EdgeList : public Graph {
+private:
+    // List of edges in the form (from, to, weight)
+    vector<tuple<string, string, float>> edges;
+
+public:
+    explicit EdgeList(const vector<tuple<string, string, float>>& edges)
+            : Graph(edges), edges(edges) {}
+
+    vector<pair<string, float>> outdegrees(string word) override {
+        vector<pair<string, float>> result;
+        for (const auto& edge : edges) {
+            if (get<0>(edge) == word) { // Check 'from' matches the word
+                result.emplace_back(get<1>(edge), get<2>(edge));
+            }
+        }
+        return result; // Return outdegrees
+    }
+
+    vector<pair<string, float>> indegrees(string word) override {
+        vector<pair<string, float>> result;
+        for (const auto& edge : edges) {
+            if (get<1>(edge) == word) { // Check 'to' matches the word
+                result.emplace_back(get<0>(edge), get<2>(edge));
+            }
+        }
+        return result; // Return indegrees
+    }
+
+    ~EdgeList() override = default;
+};
+
+
