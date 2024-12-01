@@ -37,8 +37,7 @@ int main() {
     graph = new AdjacencyList(edges);
   }
   else if (choice == 1) {
-      graph = new EdgeList(edges);
-
+    graph = new EdgeList(edges);
   }
   else {
     cout << "Sorry, Invalid Input\n";
@@ -138,6 +137,8 @@ int main() {
     }
     cout << "Predicted Sentence: " << newSentence << endl;
   }
+  // Free memory
+  delete graph;
 
   // Farewell message
   cout << "Thank you so much for using the Deterministic Masked Language Modeler today!\n";
