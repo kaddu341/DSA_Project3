@@ -8,6 +8,7 @@
 # include <sstream>
 # include <unordered_map>
 # include "Graph.h"
+# include <algorithm>
 
 using namespace std;
 
@@ -29,15 +30,17 @@ int main() {
   cout << "Done!\n";
 
   // process user input
-  int choice;
+  string choice;
   cout << "Which data structure would you like to use today? Options: [0 for adjacency list; 1 for edge list]\n";
-  cin >> choice;
+  getline(cin, choice);
 
-  if (choice == 0) {
+  if (choice == "0") {
     graph = new AdjacencyList(edges);
+      cout << "Using Adjacency List\n";
   }
-  else if (choice == 1) {
+  else if (choice == "1") {
     graph = new EdgeList(edges);
+      cout << "Using Edge List\n";
   }
   else {
     cout << "Sorry, Invalid Input\n";
