@@ -2,7 +2,7 @@
 Project 3 for UF's COP 3530: Data Structures and Algorithms
 
 # Project Details:
-- Title: Whatever name Abdullah came up with last time (I forgot)
+- Title: Deterministic Masked Language Modeler
 - Description: A masked language modeling program using a bigram statistical machine learning model to predict words.
 
 **Functionality:**
@@ -36,15 +36,15 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
 
 - When given a sentence, the algorithm finds the word before "MASK" and the word after "MASK" (if either don't exist, they will just be set to null).
 - Then, it searches through the **outdegrees** of the first word and the **indegrees** of the second word and tries to find their intersection.
-- If there are no words in the intersection, the program terminates; if there is only 1 word that is the predicted word, and if there is more than 1 the algorithm chooses the word with the highest probability to replace "MASK"
+- If there are no words in both of these vectors, the program terminates; otherwise, we compute the intersection and (if it is nonempty) choose the word with the highest probability that occurs in both vectors. If the intersection is empty, then we simply choose the word with the highest probability overall to replace "MASK"
 
 **Implementation:**
 - Since for this project we have to use at least 2 non-trivial structures, we will be using both an edge list and an adjacency matrix to represent the graph.
 
 **Team Roles:**
-- Awwab will write the Python code to parse the dataset and generate the probabilities, as well as the `main` function.
+- Awwab will write the C++ code to parse the dataset and the abstract `Graph` class, as well as the `main` function.
 - Abdullah will implement the Adjacency List and help with the video.
-- Ahsan will do the edge list.
+- Ahsan will implement the edge list.
 - We will collaborate together on the report.
 
 **Structure:**
