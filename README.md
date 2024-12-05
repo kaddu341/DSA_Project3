@@ -1,6 +1,9 @@
 # DSA_Project3
 Project 3 for UF's COP 3530: Data Structures and Algorithms
 
+# Instructions to Run Code
+- Simply clone the repository into CLion and click the green "play" button in the top right corner to compile and run the C++ code (the CMakeLists.txt is included in the source).
+
 # Project Details:
 - Title: Deterministic Masked Language Modeler
 - Description: A masked language modeling program using a bigram statistical machine learning model to predict words.
