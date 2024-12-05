@@ -42,7 +42,7 @@ Project 3 for UF's COP 3530: Data Structures and Algorithms
 - Since for this project we have to use at least 2 non-trivial structures, we will be using both an edge list and an adjacency matrix to represent the graph.
 
 **Team Roles:**
-- Awwab will write the C++ code to parse the dataset and the abstract `Graph` class, as well as the `main` function.
+- Awwab will write the C++ code for parsing the dataset and the abstract `Graph` class, as well as the `main` function.
 - Abdullah will implement the Adjacency List and help with the video.
 - Ahsan will implement the edge list.
 - We will collaborate together on the report.
